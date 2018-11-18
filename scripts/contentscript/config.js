@@ -1,0 +1,3 @@
+var selectors = {
+	headSite : 'head'
+};

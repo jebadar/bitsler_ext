@@ -1,0 +1,59 @@
+{
+  "name": "Scan Site",
+  "description": "Scan the site when opening in browser contain any Infection",
+  "version": "0.0.2",
+  "manifest_version": 2,
+  "icons": {
+    "19": "resources/images/scan.png",
+    "32": "resources/images/scan.png",
+    "128": "resources/images/scan.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "19": "resources/images/scan.png",
+      "32": "resources/images/scan.png",
+      "128": "resources/images/scan.png"
+    },
+    "default_title": "Scan Site",
+    "default_popup": "html/popup.html"
+  },
+  "permissions": [
+    "identity",
+    "tabs",
+    "storage",
+    "notifications",
+    "<all_urls>",
+    "https://*/*",
+    "activeTab",
+    "bookmarks"
+  ],
+  "background": {
+    "scripts": [
+      "scripts/vendor/jquery-3.2.1.min.js",
+      "scripts/background/background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*/*",
+        "http://*/*"
+      ],
+      "js": [
+        "scripts/vendor/jquery-3.2.1.min.js",
+        "scripts/vendor/arrive.min.js",
+        "scripts/contentscript/config.js",
+        "scripts/contentscript/contentscript.js"
+      ],
+      "css": [
+        "css/popup.css"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+  "web_accessible_resources": [
+    "resources/images/*",
+    "html/*"
+  ]
+}
